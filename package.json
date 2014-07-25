@@ -1,0 +1,23 @@
+{
+  "name": "country.part.ly",
+  "version": "0.0.1",
+  "description": "A location microservice",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com:getpartly/country.part.ly.git"
+  },
+  "dependencies": {
+    "express": "4.x",
+    "errorhandler": "1.x",
+    "morgan": "1.x",
+    "maxmind": "0.4.x"
+  },
+  "author": "Diego Marquez",
+  "contributors": [
+    "Hakan Ensari"
+  ]
+}
