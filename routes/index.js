@@ -3,7 +3,11 @@ maxmind.init('./data/GeoLiteCity.dat', { indexCache: true, checkForUpdates: true
 
 exports.index = function(req, res) {
   var loc = maxmind.getLocation(getIp(req));
-  res.jsonp(loc != null ? loc.countryCode : 'US');
+  if(loc) {
+    res.jsonp({ country: loc.countryCode });
+  } else {
+    res.status(404).jsonp({ error: 'Not found' });
+  }
 };
 
 var getIp = function(req) {
