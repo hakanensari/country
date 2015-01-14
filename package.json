@@ -1,14 +1,14 @@
 {
-  "name": "country.part.ly",
+  "name": "country",
   "version": "0.0.1",
-  "description": "A location microservice",
+  "description": "GeoIP microservice that returns client's country",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
   },
   "repository": {
     "type": "git",
-    "url": "ssh://git@github.com:getpartly/country.part.ly.git"
+    "url": "ssh://git@github.com:outofprint/country.git"
   },
   "dependencies": {
     "express": "4.x",
