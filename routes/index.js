@@ -1,5 +1,5 @@
 var maxmind = require('maxmind');
-maxmind.init('./data/GeoLiteCity.dat', { indexCache: true });
+maxmind.init('./data/GeoLiteCity.dat', { indexCache: true, checkForUpdates: true });
 
 exports.index = function(req, res) {
   var loc = maxmind.getLocation(getIp(req));
