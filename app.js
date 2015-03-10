@@ -1,3 +1,4 @@
+require('newrelic');
 var express = require('express');
 var errorhandler = require('errorhandler');
 var morgan = require('morgan');
