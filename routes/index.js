@@ -2,7 +2,15 @@ var maxmind = require('maxmind');
 maxmind.init('./data/GeoLiteCity.dat', { indexCache: true, checkForUpdates: true });
 
 exports.index = function(req, res) {
-  var loc = maxmind.getLocation(getIp(req));
+  var loc;
+
+  []
+    .concat(getIp(req))
+    .some(function(ip) {
+      loc = maxmind.getLocation(ip);
+      return loc !== null;
+    });
+
   if(loc) {
     res.jsonp({ country: loc.countryCode });
   } else {
@@ -15,9 +23,9 @@ var getIp = function(req) {
     return req.query.ip;
   }
 
-  var forwardedIps = req.header('x-forwarded-for');
+  var forwardedIps = req.header('X-Forwarded-For');
   if (forwardedIps) {
-    return forwardedIps.split(',')[0];
+    return forwardedIps.split(',');
   }
 
   return req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
