@@ -2,6 +2,8 @@ var maxmind = require('maxmind');
 maxmind.init('./data/GeoLiteCity.dat', { indexCache: true, checkForUpdates: true });
 
 exports.index = function(req, res) {
+  res.header('Access-Control-Allow-Origin', '*');
+
   var loc;
 
   []
