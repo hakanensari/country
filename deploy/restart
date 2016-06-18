@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-sudo restart country 2>/dev/null || sudo start country
+sudo restart api.country.is 2>/dev/null || sudo start api.country.is
