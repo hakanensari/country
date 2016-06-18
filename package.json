@@ -14,7 +14,7 @@
     "express": "4.x",
     "errorhandler": "1.x",
     "morgan": "1.x",
-    "maxmind": "0.5.x",
+    "maxmind": "0.6.x",
     "newrelic": "1.x"
   },
   "author": "Diego Marquez",
