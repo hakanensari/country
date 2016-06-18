@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "ssh://git@github.com:outofprint/country.git"
+    "url": "ssh://git@github.com:hakanensari/country.git"
   },
   "dependencies": {
     "express": "4.x",
