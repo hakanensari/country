@@ -1,21 +1,39 @@
-require('newrelic');
-var express = require('express');
-var errorhandler = require('errorhandler');
-var morgan = require('morgan');
-var http = require('http');
-var path = require('path');
-var routes = require('./routes');
-var app = express();
+const { existsSync } = require('fs');
+const { spawn, spawnSync } = require('child_process');
+const cors = require('cors');
+const express = require('express');
+const maxmind = require('maxmind');
 
-app.set('port', process.env.PORT || 3000);
-app.use(morgan('combined'));
-
-if ('development' == app.get('env')) {
-  app.use(errorhandler());
+// Seed database file.
+if (!existsSync('./GeoLiteCity.dat')) {
+  spawnSync('./getdb');
 }
 
-app.get('/', routes.index);
+// Refresh database file once a day.
+setInterval(
+  () => { spawn('./getdb'); },
+  24 * 3600 * 1000,
+);
 
-http.createServer(app).listen(app.get('port'), function() {
-  console.log('Server listening on port ' + app.get('port'));
+// Initialise database.
+maxmind.init('./GeoLiteCity.dat', {
+  indexCache: true,
+  checkForUpdates: true,
 });
+
+// Set up app.
+const app = express();
+
+app.use(cors());
+app.enable('trust proxy');
+
+app.get('/', (req, res) => {
+  const loc = maxmind.getLocation(req.ip);
+  if (loc) {
+    res.json({ country: loc.countryCode });
+  } else {
+    res.status(404).json({ country: null });
+  }
+});
+
+app.listen(3000, () => { console.log('Listening on port 3000'); });

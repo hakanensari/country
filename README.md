@@ -1,3 +1,3 @@
 # Country
 
-A single-endpoint JSON API that returns the country of the querying browser
+Returns country based on GeoIP

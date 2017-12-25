@@ -1,24 +1,16 @@
 {
   "name": "country",
-  "version": "0.0.1",
-  "description": "GeoIP microservice that returns client's country",
+  "version": "1.0.0",
+  "description": "Returns country based on GeoIP",
+  "author": "Hakan Ensari",
+  "license": "MIT",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "ssh://git@github.com:hakanensari/country.git"
-  },
   "dependencies": {
+    "cors": "2.x",
     "express": "4.x",
-    "errorhandler": "1.x",
-    "morgan": "1.x",
-    "maxmind": "0.6.x",
-    "newrelic": "1.x"
-  },
-  "author": "Diego Marquez",
-  "contributors": [
-    "Hakan Ensari"
-  ]
+    "maxmind": "0.6.x"
+  }
 }

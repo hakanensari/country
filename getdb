@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-mkdir -p data
-cd data
+#!/bin/sh
 wget http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz
 gunzip -f GeoLiteCity.dat.gz

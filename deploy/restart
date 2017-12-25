@@ -1,2 +1,0 @@
-#!/usr/bin/env bash
-sudo restart api.country.is 2>/dev/null || sudo start api.country.is
