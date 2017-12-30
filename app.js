@@ -5,7 +5,7 @@ const express = require('express');
 const maxmind = require('maxmind');
 
 // Seed database file.
-if (!existsSync('./GeoLiteCity.dat')) {
+if (!existsSync('./GeoLite2-Country.mmdb')) {
   spawnSync('./getdb');
 }
 
@@ -16,10 +16,10 @@ setInterval(
 );
 
 // Initialise database.
-maxmind.init('./GeoLiteCity.dat', {
-  indexCache: true,
-  checkForUpdates: true,
-});
+const countryLookup = maxmind.openSync(
+  './GeoLite2-Country.mmdb',
+  { watchForUpdates: true },
+);
 
 // Set up app.
 const app = express();
@@ -28,12 +28,14 @@ app.use(cors());
 app.enable('trust proxy');
 
 app.get('/', (req, res) => {
-  const loc = maxmind.getLocation(req.ip);
+  const loc = countryLookup.get(req.ip);
   if (loc) {
-    res.json({ country: loc.countryCode });
+    res.json({ country: loc.country.iso_code });
   } else {
     res.status(404).json({ country: null });
   }
 });
 
-app.listen(3000, () => { console.log('Listening on port 3000'); });
+app.listen(3000, () => {
+  console.log('Listening on port 3000');
+});

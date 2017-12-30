@@ -11,6 +11,6 @@
   "dependencies": {
     "cors": "2.x",
     "express": "4.x",
-    "maxmind": "0.6.x"
+    "maxmind": "2.x"
   }
 }
