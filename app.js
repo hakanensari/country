@@ -30,9 +30,9 @@ app.enable('trust proxy');
 app.get('/', (req, res) => {
   const loc = countryLookup.get(req.ip);
   if (loc) {
-    res.json({ country: loc.country.iso_code });
+    res.jsonp({ country: loc.country.iso_code });
   } else {
-    res.status(404).json({ country: null });
+    res.status(404).jsonp({ country: null });
   }
 });
 
