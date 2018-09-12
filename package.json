@@ -1,7 +1,7 @@
 {
   "name": "country",
   "version": "1.0.0",
-  "description": "Returns country based on GeoIP",
+  "description": "IP to geolocation API",
   "author": "Hakan Ensari",
   "license": "MIT",
   "main": "app.js",

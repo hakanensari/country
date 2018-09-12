@@ -1,4 +1,4 @@
 #!/bin/sh
-wget http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.tar.gz
-tar -zxf GeoLite2-Country.tar.gz --strip-components 1 --wildcards */GeoLite2-Country.mmdb
-rm GeoLite2-Country.tar.gz
+wget http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz
+tar -zxf GeoLite2-City.tar.gz --strip-components 1 --wildcards */GeoLite2-City.mmdb
+rm GeoLite2-City.tar.gz
