@@ -1,0 +1,51 @@
+body {
+  background-color: #303030;
+  color: #ffffff;
+  font-family: sans-serif;
+  padding: 1em;
+}
+
+a {
+  color: #2296f3;
+}
+
+.header {
+  margin-bottom: 10px;
+}
+.header .fa-globe-europe {
+  color: #dddddd;
+}
+
+.header h1 {
+  margin-bottom: 0;
+}
+
+.header ul {
+  list-style-type: none;
+  margin-bottom: 2em;
+  padding-left: 0;
+}
+
+.header li {
+  display: inline-block;
+}
+
+.header li:not(:last-child) {
+  margin-right: 5px;
+}
+
+pre {
+  white-space: normal;
+}
+
+.hljs {
+  white-space: pre;
+}
+
+.http {
+  color: #2D4A53;
+}
+
+.http:hover {
+  cursor: pointer;
+}
