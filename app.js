@@ -32,10 +32,10 @@ app.get('/:ip?', (req, res) => {
   if (loc) {
     res.jsonp(loc);
   } else {
-    res.status(404).jsonp({ error: 'Not found' });
+    res.status(404);
   }
 });
 
-app.listen(3000, _ => {
+app.listen(3000, () => {
   console.log('Listening on port 3000');
 });

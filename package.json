@@ -5,6 +5,10 @@
   "author": "Hakan Ensari",
   "license": "MIT",
   "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hakanensari/country"
+  },
   "scripts": {
     "start": "node app.js"
   },
