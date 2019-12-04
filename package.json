@@ -1,7 +1,7 @@
 {
   "name": "country",
   "version": "1.0.0",
-  "description": "IP to geolocation API",
+  "description": "Uses geolocation data to look up the country of an IP",
   "author": "Hakan Ensari",
   "license": "MIT",
   "main": "app.js",
