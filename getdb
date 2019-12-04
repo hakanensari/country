@@ -1,6 +1,4 @@
 #!/bin/sh
 mkdir -p data
 cd data
-curl -O http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.tar.gz
-tar -zxf GeoLite2-Country.tar.gz --strip-components 1
-rm GeoLite2-Country.tar.gz
+curl http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.tar.gz | tar --strip-components 1 -zxf -
