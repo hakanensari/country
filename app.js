@@ -5,7 +5,7 @@ const express = require('express')
 const maxmind = require('maxmind')
 
 // Seed database
-if (!existsSync('./GeoLite2-City.mmdb')) {
+if (!existsSync('./data/GeoLite2-City.mmdb')) {
   spawnSync('./getdb')
 }
 
@@ -17,7 +17,7 @@ setInterval(
 
 // Initialise database
 const countryLookup = maxmind.openSync(
-  './GeoLite2-City.mmdb',
+  './data/GeoLite2-City.mmdb',
   { watchForUpdates: true }
 )
 
