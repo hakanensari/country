@@ -1,7 +1,7 @@
 body {
   background-color: #303030;
   color: #ffffff;
-  font-family: sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
   padding: 1em;
 }
 
@@ -9,8 +9,13 @@ a {
   color: #2296f3;
 }
 
+strong {
+  color: #abb2bf;
+  font-weight: normal;
+}
+
 .header {
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 }
 .header .fa-globe-europe {
   color: #dddddd;
@@ -22,7 +27,6 @@ a {
 
 .header ul {
   list-style-type: none;
-  margin-bottom: 2em;
   padding-left: 0;
 }
 
@@ -31,7 +35,7 @@ a {
 }
 
 .header li:not(:last-child) {
-  margin-right: 5px;
+  margin-right: 8px;
 }
 
 pre {
@@ -39,6 +43,8 @@ pre {
 }
 
 .hljs {
+  border-radius: 5px;
+  padding: 10px;
   white-space: pre;
 }
 

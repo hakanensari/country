@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="A free API that helps you look up the country where an IP address is based">
-  <title>IP to Country API</title>
+  <meta name="description" content="Country is a geolocation API that gets your visitors' country from their IP.">
+  <title>IP Geolocation API | Country</title>
   <script defer src="https://kit.fontawesome.com/d12ab438e8.js"></script>
   <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.16.2/build/highlight.min.js"></script>
   <script defer src="javascripts/application.js"></script>
@@ -15,7 +15,7 @@
   <header class="header">
     <i class="fad fa-globe-europe fa-5x"></i>
     <h1>Country</h1>
-    <p>Country is an IP to geolocation API that helps you look up the country where an IP address is based.</p>
+    <p>Country is an <strong>open-source</strong> and <strong>privacy-conscious</strong> geolocation API that gets your users' country (and nothing else) from their IP.</p>
     <ul>
       <li>
         <a href="https://github.com/hakanensari/country">
@@ -31,17 +31,18 @@
   </header>
 
   <h3>Usage</h3>
-  <p>The interface is minimal.</p>
+  <p>The interface is minimal. Check it out by clicking on the examples below.</p>
   <p>The root route queries the IP making the request.</p>
   <pre><code class="hljs http">GET https://api.country.is/ HTTP/1.1</code></pre>
-  <p>Or you can specify an IP explicitly.</p>
+  <p>Or query an IP explicitly.</p>
   <pre><code class="hljs http">GET https://api.country.is/9.9.9.9 HTTP/1.1</code></pre>
+  <p>That's it!</p>
 
   <h3>Deployment</h3>
-  <p>Use the <a href="https://api.country.is">hosted service</a> or run privately with Docker.</p>
+  <p>If you prefer not to use the <a href="https://api.country.is">hosted service</a>, run Country privately with Docker.</p>
   <pre><code class="hljs bash">docker run -d -p 3000:3000 hakanensari/country</code></pre>
 
   <h3>Notes</h3>
-  <p>Country uses <a href="https://www.maxmind.com">GeoLite2 data</a> created by MaxMind.</p>
+  <p>Country uses <a href="https://www.maxmind.com">GeoLite2 data</a> created by MaxMind. The hosted service does not log requests.</p>
 </body>
 </html>
