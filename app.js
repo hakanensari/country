@@ -16,8 +16,8 @@ app.set('port', process.env.PORT || '3000')
 app.enable('trust proxy')
 app.use(cors())
 
-app.get('/:ip?', (req, res) => {
-  maxmind.open(datafile).then((lookup) => {
+maxmind.open(datafile, { watchForUpdates: true }).then((lookup) => {
+  app.get('/:ip?', (req, res) => {
     const location = lookup.get(req.params.ip || req.ip)
     if (location) {
       res.jsonp({ country: location.country.iso_code })
