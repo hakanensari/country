@@ -1,7 +1,7 @@
 const { spawn, spawnSync } = require('child_process')
 const cors = require('cors')
 const express = require('express')
-const { existsSync, readFileSync, statSync } = require('fs')
+const { existsSync, readFileSync, stat } = require('fs')
 const { Reader } = require('maxmind')
 
 const file = './data/GeoLite2-Country.mmdb'
@@ -16,7 +16,9 @@ const app = express()
 app.enable('trust proxy')
 app.use(cors())
 app.get('/version', (_, res) => {
-  res.jsonp({ file: { birthtime: statSync(file).birthtime.toISOString() } })
+  stat(file, (_, stats) => {
+    res.jsonp({ file: { birthtime: stats.birthtime.toISOString() } })
+  })
 })
 app.get('/:ip?', (req, res) => {
   const location = lookup.get(req.params.ip || req.ip)
