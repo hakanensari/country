@@ -2,7 +2,7 @@
 
 [![Build](https://github.com/hakanensari/country/workflows/build/badge.svg)](https://github.com/hakanensari/country/actions)
 
-**Country** is an IP to geolocation API that helps you look up the country where an IP address is based. It uses [GeoLite2 data](http://dev.maxmind.com/geoip/geoip2/geolite2/) provided by MaxMind.
+[**Country**](https://country.is) is a privacy-conscious geolocation API that gets your users' country (and nothing else) from their IP.
 
 ## Usage
 
@@ -14,7 +14,7 @@ The root route queries the IP making the request.
 https://api.country.is/
 ```
 
-Or you can specify an IP explicitly.
+Or query an IP explicitly.
 
 ```
 https://api.country.is/9.9.9.9
@@ -27,3 +27,7 @@ Use the [hosted service](https://api.country.is) or run privately with
 ```
 docker run -d -p 3000:3000 hakanensari/country
 ```
+
+## Notes
+
+Country uses [GeoLite2 data](http://dev.maxmind.com/geoip/geoip2/geolite2/) provided by MaxMind. The hosted service does not log requests.
