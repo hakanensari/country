@@ -24,3 +24,10 @@ test('handles failure', async () => {
 
   expect(res.status).toBe(422)
 })
+
+test('returns version', async () => {
+  const res = await request(app)
+    .get('/version')
+
+  expect(res.body.file.birthtime).toBeDefined()
+})
