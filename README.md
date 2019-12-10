@@ -1,5 +1,7 @@
 # Country
 
+[![Build](https://github.com/hakanensari/country/workflows/build/badge.svg)](https://github.com/hakanensari/country/actions)
+
 **Country** is an IP to geolocation API that helps you look up the country where an IP address is based. It uses [GeoLite2 data](http://dev.maxmind.com/geoip/geoip2/geolite2/) provided by MaxMind.
 
 ## Usage
