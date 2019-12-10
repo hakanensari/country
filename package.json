@@ -10,7 +10,7 @@
     "url": "https://github.com/hakanensari/country"
   },
   "scripts": {
-    "start": "node app.js"
+    "start": "node server.js",
   },
   "dependencies": {
     "cors": "^2.8.5",

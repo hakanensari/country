@@ -13,7 +13,6 @@ setInterval(() => { spawn('./getdb') }, 24 * 3600 * 1000)
 const lookup = new Reader(readFileSync(datafile), { watchForUpdates: true })
 
 const app = express()
-app.set('port', process.env.PORT || '3000')
 app.enable('trust proxy')
 app.use(cors())
 app.get('/:ip?', (req, res) => {
@@ -25,6 +24,4 @@ app.get('/:ip?', (req, res) => {
   }
 })
 
-app.listen(app.get('port'), () => {
-  console.log(`Listening on port ${app.get('port')}`)
-})
+module.exports = app
