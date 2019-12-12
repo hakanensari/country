@@ -1,0 +1,10 @@
+{
+  "name": "country",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2"
+  }
+}
