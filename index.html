@@ -17,7 +17,7 @@
   <header class="header">
     <i class="fad fa-globe-europe fa-5x"></i>
     <h1>Country</h1>
-    <p>Country is an <strong>open-source</strong> and <strong>privacy-conscious</strong> geolocation API that gets your users' country (and nothing else) from their IP.</p>
+    <p>Country is a <strong>browser-friendly</strong> and <strong>privacy-conscious</strong> geolocation API that gets your users' country (and nothing else) from their IP.</p>
     <ul>
       <li>
         <a href="https://github.com/hakanensari/country">
@@ -33,15 +33,17 @@
   </header>
 
   <h3>Usage</h3>
-  <p>The interface is minimal. Check it out by clicking on the examples below.</p>
-  <p>The root route queries the IP making the request.</p>
+  <p>Country has a minimal :fire: interface.
+  <p>Query the IP of the requesting client.</p>
   <pre><code class="hljs http">GET https://api.country.is/ HTTP/1.1</code></pre>
-  <p>Or query an IP explicitly.</p>
+  <p>Query any IP.</p>
   <pre><code class="hljs http">GET https://api.country.is/9.9.9.9 HTTP/1.1</code></pre>
-  <p>That's it!</p>
+  <p>See the age of the underlying data file.</p>
+  <pre><code class="hljs http">GET https://api.country.is/version HTTP/1.1</code></pre>
+  <p>Country automatically checks for a newer version every 24 hours.</p>
 
   <h3>Deployment</h3>
-  <p>If you prefer not to use the <a href="https://api.country.is">hosted service</a>, run Country privately with Docker.</p>
+  <p>If you prefer not to use the <a href="https://api.country.is">hosted service</a>, run a private instance with Docker.</p>
   <pre><code class="hljs bash">docker run -d -p 3000:3000 hakanensari/country</code></pre>
 
   <h3>Notes</h3>
