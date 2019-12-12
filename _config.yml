@@ -1,0 +1,8 @@
+exclude:
+  - CNAME
+  - data
+  - Gemfile*
+  - node_modules
+  - package*.json
+plugins:
+  - jemoji
