@@ -2,23 +2,31 @@
 
 [![Build](https://github.com/hakanensari/country/workflows/build/badge.svg)](https://github.com/hakanensari/country/actions)
 
-[**Country**](https://country.is) is a privacy-conscious geolocation API that gets your users' country (and nothing else) from their IP.
+[**Country**](https://country.is) is a browser-friendly and privacy-conscious geolocation API that gets your users' country (and nothing else) from their IP.
 
 ## Usage
 
-The interface is minimal.
+Country has a minimal :fire: interface.
 
-The root route queries the IP making the request.
+Query the IP of the requesting client.
 
 ```
 https://api.country.is/
 ```
 
-Or query an IP explicitly.
+Query any IP.
 
 ```
 https://api.country.is/9.9.9.9
 ```
+
+See the age of the underlying data file.
+
+```
+https://api.country.is/version
+```
+
+Country automatically checks for a newer version every 24 hours.
 
 ## Deployment
 
