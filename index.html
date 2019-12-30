@@ -44,9 +44,11 @@
 
   <h3>Deployment</h3>
   <p>If you prefer not to use the <a href="https://api.country.is">hosted service</a>, run a private instance with Docker.</p>
-  <pre><code class="hljs bash">docker run -d -p 3000:3000 hakanensari/country</code></pre>
+  <pre><code class="hljs bash">docker run -d -p 3000:3000 hakanensari/country -e LICENSE_KEY=YOUR_LICENSE_KEY</code></pre>
+  <p>Replace the <code>YOUR_LICENSE_KEY</code> placeholder with a license key associated with your MaxMind account.</p>
 
   <h3>Notes</h3>
-  <p>Country uses <a href="https://www.maxmind.com">GeoLite2 data</a> created by MaxMind. The hosted service does not log requests.</p>
+  <p>Country uses <a href="https://www.maxmind.com">GeoLite2 data</a> created by MaxMind. Since 30 December 2019, you need to <a href="https://www.maxmind.com/en/geolite2/signup">register for a license key</a> to download their data.</p>
+  <p>The hosted service does not log requests.</p>
 </body>
 </html>
