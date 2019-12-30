@@ -7,9 +7,14 @@ const { Reader } = require('maxmind');
 const file = './data/GeoLite2-Country.mmdb';
 
 if (!existsSync(file)) {
+  if (process.env.LICENSE_KEY === undefined) {
+    throw new Error('Set a license key to download GeoIP data from MaxMind');
+  }
   spawnSync('./getdb');
 }
-setInterval(() => { spawn('./getdb'); }, 24 * 3600 * 1000);
+if (process.env.LICENSE_KEY) {
+  setInterval(() => { spawn('./getdb'); }, 24 * 3600 * 1000);
+}
 const lookup = new Reader(readFileSync(file), { watchForUpdates: true });
 
 const app = express();

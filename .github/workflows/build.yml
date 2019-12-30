@@ -13,6 +13,8 @@ jobs:
         node-version: '12.x'
     - run: npm install
     - run: npm test
+      env:
+        LICENSE_KEY: ${{ secrets.LICENSE_KEY }}
     - name: Publish image
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
