@@ -17,6 +17,7 @@ jobs:
         LICENSE_KEY: ${{ secrets.LICENSE_KEY }}
     - name: Publish image
       uses: elgohr/Publish-Docker-Github-Action@a72734e
+      if: github.event_name == 'push' && success()
       with:
         name: hakanensari/country
         username: ${{ secrets.DOCKER_USERNAME }}
