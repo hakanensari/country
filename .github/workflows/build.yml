@@ -16,7 +16,7 @@ jobs:
       env:
         LICENSE_KEY: ${{ secrets.LICENSE_KEY }}
     - name: Publish image
-      uses: elgohr/Publish-Docker-Github-Action@master
+      uses: elgohr/Publish-Docker-Github-Action@a72734e
       with:
         name: hakanensari/country
         username: ${{ secrets.DOCKER_USERNAME }}
