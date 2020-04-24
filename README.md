@@ -30,7 +30,7 @@ Country automatically checks for a newer version every 24 hours.
 
 ## Deployment
 
-Use our [hosted service](https://api.country.is) or run privately with
+Use the [hosted service](https://api.country.is) or run privately with
 
 ```
 docker run -d -p 3000:3000 hakanensari/country -e LICENSE_KEY=YOUR_LICENSE_KEY
