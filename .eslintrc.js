@@ -1,16 +1,12 @@
 module.exports = {
-  'env': {
-    'browser': true,
-    'es6': true
+  env: {
+    brower: true,
   },
-  'extends': 'airbnb-base',
-  'globals': {
-    'hljs': 'readonly'
+  extends: ["eslint:recommended", "plugin:prettier/recommended"],
+  globals: {
+    hljs: "readonly",
   },
-  'rules': {
-    'no-param-reassign': [
-      'error',
-      { 'props': false }
-    ]
-  }
+  rules: {
+    "no-param-reassign": ["error", { props: false }],
+  },
 }
