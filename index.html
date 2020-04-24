@@ -1,54 +1,54 @@
 ---
+layout: default
+title: IP Geolocation API | Country.is
+description: Country is a geolocation API that gets your visitors' country from their IP.
 ---
-<!doctype html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Country is a geolocation API that gets your visitors' country from their IP.">
-  <title>IP Geolocation API | Country</title>
-  <script defer src="https://kit.fontawesome.com/d12ab438e8.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.16.2/build/highlight.min.js"></script>
-  <script defer src="javascripts/application.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.16.2/build/styles/solarized-dark.min.css">
-  <link rel="stylesheet" href="styles/application.css">
-</head>
-<body>
-  <header class="header">
-    <i class="fad fa-globe-europe fa-5x"></i>
-    <h1>Country</h1>
-    <p>Country is a <strong>browser-friendly</strong> and <strong>privacy-conscious</strong> geolocation API that gets your users' country (and nothing else) from their IP.</p>
-    <ul>
-      <li>
-        <a href="https://github.com/hakanensari/country">
-          <i class="fab fa-github fa-lg" title="GitHub"></i>
-        </a>
-      </li>
-      <li>
-        <a href="https://hub.docker.com/r/hakanensari/country/">
-          <i class="fab fa-docker fa-lg" title="Docker"></i>
-        </a>
-      </li>
-    </ul>
-  </header>
 
-  <h3>Usage</h3>
-  <p>Country has a minimal :fire: interface.
-  <p>Query the IP of the requesting client.</p>
-  <pre><code class="hljs http">GET https://api.country.is/ HTTP/1.1</code></pre>
-  <p>Query any IP.</p>
-  <pre><code class="hljs http">GET https://api.country.is/9.9.9.9 HTTP/1.1</code></pre>
-  <p>See the age of the underlying data file.</p>
-  <pre><code class="hljs http">GET https://api.country.is/version HTTP/1.1</code></pre>
-  <p>Country automatically checks for a newer version every 24 hours.</p>
+<header class="header">
+  <i class="fad fa-globe-europe fa-4x"></i>
+  <h1>Country</h1>
+  <p>
+    Country is a browser-friendly and privacy-conscious geolocation API that
+    gets your users' country (and nothing else) from their IP.
+  </p>
+  <ul>
+    <li>
+      <a href="https://github.com/hakanensari/country">
+        <i class="fab fa-github fa-lg" title="GitHub"></i>
+      </a>
+    </li>
+    <li>
+      <a href="https://hub.docker.com/r/hakanensari/country">
+        <i class="fab fa-docker fa-lg" title="Docker"></i>
+      </a>
+    </li>
+  </ul>
+</header>
 
-  <h3>Deployment</h3>
-  <p>If you prefer not to use the <a href="https://api.country.is">hosted service</a>, run a private instance with Docker.</p>
-  <pre><code class="hljs bash">docker run -d -p 3000:3000 hakanensari/country -e LICENSE_KEY=YOUR_LICENSE_KEY</code></pre>
-  <p>Replace the <code>YOUR_LICENSE_KEY</code> placeholder with a license key associated with your MaxMind account.</p>
+<h3>Usage</h3>
+<p>Country has a minimal :fire: interface.</p>
+<p>Query yourself.</p>
+{% include window.html address="https://api.country.is" %}
+<p>Query any IP.</p>
+{% include window.html address="https://api.country.is/9.9.9.9" %}
+<p>See the age of the underlying data file.</p>
+{% include window.html address="https://api.country.is/version" %}
+<p>Country automatically checks for a newer version every 24 hours.</p>
 
-  <h3>Notes</h3>
-  <p>Country uses <a href="https://www.maxmind.com">GeoLite2 data</a> created by MaxMind. Since 30 December 2019, you need to <a href="https://www.maxmind.com/en/geolite2/signup">register for a license key</a> to download their data.</p>
-  <p>The hosted service does not log requests.</p>
-</body>
-</html>
+<h3>Deployment</h3>
+<p>
+  If you prefer not to use the
+  <a href="https://api.country.is">hosted service</a>, run a private instance
+  <a href="https://hub.docker.com/r/hakanensari/country">with Docker</a>.
+</p>
+
+<h3>Notes</h3>
+<p>
+  Country uses <a href="https://www.maxmind.com">GeoLite2 data</a> created by
+  MaxMind. Since 30 December 2019, you need to
+  <a href="https://www.maxmind.com/en/geolite2/signup"
+    >register for a license key</a
+  >
+  to download their data.
+</p>
+<p>The hosted service does not log requests.</p>
