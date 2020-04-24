@@ -27,7 +27,7 @@ app.get('/version', (req, res) => {
 });
 app.get('/:ip?', (req, res) => {
   const location = lookup.get(req.params.ip || req.ip);
-  if (location) {
+  if (location && location.country) {
     res.jsonp({ country: location.country.iso_code });
   } else {
     res.status(422).send({ country: null });
