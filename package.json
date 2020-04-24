@@ -1,6 +1,6 @@
 {
   "name": "country",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Uses geolocation data to look up the country of an IP",
   "author": "Hakan Ensari",
   "license": "MIT",
