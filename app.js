@@ -33,7 +33,7 @@ app.get("/:ip?", (req, res) => {
   if (location && location.country) {
     res.jsonp({ country: location.country.iso_code })
   } else {
-    res.status(422).send({ country: null })
+    res.status(422).jsonp({ country: null })
   }
 })
 

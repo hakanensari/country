@@ -16,6 +16,7 @@ test("gets any IP", async () => {
 test("handles failure", async () => {
   const res = await request(app).get("/").set("x-forwarded-for", "192.168.0.1")
   expect(res.status).toBe(422)
+  expect(res.body.country).toBeNull()
 })
 
 test("returns version", async () => {
