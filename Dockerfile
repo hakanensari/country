@@ -1,4 +1,5 @@
 FROM node:12-alpine
+RUN apk add --no-cache curl
 ENV NODE_ENV production
 WORKDIR /app
 COPY package*.json ./
