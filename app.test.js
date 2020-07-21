@@ -2,8 +2,8 @@ const request = require("supertest")
 const app = require("./app")
 
 test("gets the requesting IP", async () => {
-  const res = await request(app).get("/").set("x-forwarded-for", "9.9.9.9")
-  expect(res.body.country).toBe("FR")
+  const res = await request(app).get("/").set("x-forwarded-for", "80.245.152") // the German National Library
+  expect(res.body.country).toBe("DE")
 })
 
 test("gets any IP", async () => {
