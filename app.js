@@ -25,15 +25,15 @@ app.enable("trust proxy")
 app.use(cors())
 app.get("/version", (req, res) => {
   stat(file, (err, stats) => {
-    res.jsonp({ file: { birthtime: stats.birthtime.toISOString() } })
+    res.json({ file: { birthtime: stats.birthtime.toISOString() } })
   })
 })
 app.get("/:ip?", (req, res) => {
   const location = lookup.get(req.params.ip || req.ip)
   if (location && location.country) {
-    res.jsonp({ country: location.country.iso_code })
+    res.json({ country: location.country.iso_code })
   } else {
-    res.status(422).jsonp({ country: null })
+    res.status(422).json({ country: null })
   }
 })
 
