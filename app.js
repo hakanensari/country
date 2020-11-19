@@ -29,11 +29,12 @@ app.get("/version", (req, res) => {
   })
 })
 app.get("/:ip?", (req, res) => {
-  const location = lookup.get(req.params.ip || req.ip)
+  const ip = req.params.ip || req.ip
+  const location = lookup.get(ip)
   if (location && location.country) {
-    res.json({ country: location.country.iso_code })
+    res.json({ country: location.country.iso_code, ip: ip })
   } else {
-    res.status(422).json({ country: null })
+    res.status(422).json({ country: null, ip: ip })
   }
 })
 
