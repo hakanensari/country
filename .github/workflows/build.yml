@@ -7,17 +7,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
         with:
-          node-version: "14.x"
+          node-version: "14"
       - run: npm install
       - run: npm test
         env:
           LICENSE_KEY: ${{ secrets.LICENSE_KEY }}
       - name: Publish image
-        uses: elgohr/Publish-Docker-Github-Action@b2f6325
-        if: github.event_name == 'push' && success()
+        uses: elgohr/Publish-Docker-Github-Action@3.03
         with:
           name: hakanensari/country
           username: ${{ secrets.DOCKER_USERNAME }}
