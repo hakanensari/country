@@ -1,0 +1,54 @@
+---
+layout: default
+title: IP Geolocation API | Country
+description: Country is a free geolocation API that locates your visitors' country from their IP.
+---
+
+<header class="header">
+  <i class="fad fa-globe-europe fa-4x"></i>
+  <h1>Country</h1>
+  <p>
+    Country is a browser-friendly and privacy-conscious geolocation API that
+    gets your users' country (and nothing else) from their IP.
+  </p>
+  <ul>
+    <li>
+      <a href="https://github.com/hakanensari/country">
+        <i class="fab fa-github fa-lg" title="GitHub"></i>
+      </a>
+    </li>
+    <li>
+      <a href="https://hub.docker.com/r/hakanensari/country">
+        <i class="fab fa-docker fa-lg" title="Docker"></i>
+      </a>
+    </li>
+  </ul>
+</header>
+
+<h3>Usage</h3>
+<p>Country has a minimal :fire: interface.</p>
+<p>Query yourself.</p>
+{% include window.html address="https://api.country.is" %}
+<p>Query any IP.</p>
+{% include window.html address="https://api.country.is/9.9.9.9" %}
+<p>See the age of the underlying data file.</p>
+{% include window.html address="https://api.country.is/version" %}
+<p>Country automatically checks for a newer version every 24 hours.</p>
+
+<h3>Deployment</h3>
+<p>
+  If you prefer not to use the
+  <a href="https://api.country.is">hosted service</a>, run a private instance
+  <a href="https://hub.docker.com/r/hakanensari/country">with Docker</a>.
+</p>
+
+<h3>Notes</h3>
+<p>
+  Country uses <a href="https://www.maxmind.com">GeoLite2 data</a> created by
+  MaxMind. Since 30 December 2019, you need to
+  <a href="https://www.maxmind.com/en/geolite2/signup"
+    >register for a license key</a
+  >
+  to download their data.
+</p>
+<p>The hosted service does not log requests.</p>
