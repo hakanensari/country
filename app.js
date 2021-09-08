@@ -21,13 +21,24 @@ if (process.env.LICENSE_KEY) {
 
 const lookup = new Reader(readFileSync(file), { watchForUpdates: true })
 const app = express()
+
 app.enable("trust proxy")
 app.use(cors())
+app.use((req, res, next) => {
+  if (req.path == "/") {
+    res.set("Cache-Control", "no-cache")
+  } else {
+    res.set("Cache-Control", "public, max-age=3600")
+  }
+  next()
+})
+
 app.get("/version", (req, res) => {
   stat(file, (err, stats) => {
-    res.json({ file: { birthtime: stats.birthtime.toISOString() } })
+    res.json({ updatedAt: stats.birthtime.toDateString() })
   })
 })
+
 app.get("/:ip?", (req, res) => {
   const ip = req.params.ip || req.ip
   const location = lookup.get(ip)
