@@ -55,7 +55,7 @@ describe("GET /:ip", () => {
 describe("GET /version", () => {
   test("returns when data was updated", async () => {
     const res = await request(app).get("/version")
-    expect(res.body.updatedAt).toBeDefined()
+    expect(res.body.updatedOn).toBeDefined()
   })
 
   test("sets cache-control to public", async () => {

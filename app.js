@@ -35,7 +35,7 @@ app.use((req, res, next) => {
 
 app.get("/version", (req, res) => {
   stat(file, (err, stats) => {
-    res.json({ updatedAt: stats.birthtime.toDateString() })
+    res.json({ updatedOn: stats.birthtime.toDateString() })
   })
 })
 
