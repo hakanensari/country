@@ -33,7 +33,7 @@ Country automatically checks for a newer version every 24 hours.
 Use the [hosted service](https://api.country.is) or run privately with
 
 ```
-docker run -d -p 3000:3000 hakanensari/country -e LICENSE_KEY=YOUR_LICENSE_KEY
+docker run -d -p 3000:3000 -e LICENSE_KEY=YOUR_LICENSE_KEY hakanensari/country
 ```
 
 Replace the `YOUR_LICENSE_KEY` placeholder with a license key associated with your MaxMind account.
