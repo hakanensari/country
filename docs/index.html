@@ -3,12 +3,21 @@ layout: default
 title: IP Geolocation API | Country
 description: Country is a free and open-source geolocation API that finds the country of any IP address.
 ---
+
 <header class="header">
   <i class="fad fa-globe-europe fa-4x"></i>
   <h1>Country</h1>
   <p>
-    Country is a browser-friendly, privacy-conscious geolocation API that gets a user's country (and nothing else) from
-    their IP address.
+    Country is a privacy-conscious geolocation API that finds a user's country
+    (and nothing else) from their IP address.
+  </p>
+  <p>
+    The public service hosted here at
+    <a href="https://api.country.is"><code>api.country.is</code></a> is free to
+    use. In other words, no API keys or usage quotas.
+  </p>
+  <p>
+    Country is open-source.
   </p>
   <ul>
     <li>
@@ -26,25 +35,29 @@ description: Country is a free and open-source geolocation API that finds the co
 
 <h3>Usage</h3>
 <p>Country has a minimal :fire: interface.</p>
-<p>Query yourself.</p>
+<p>Let your browser or application query its own IP address.</p>
 {% include window.html address="https://api.country.is" %}
-<p>Query any IP.</p>
+<p>Or query any IP address.</p>
 {% include window.html address="https://api.country.is/9.9.9.9" %}
-<p>Country also works with IPv6.</p>
+<p>The API also works with IPv6 addresses.</p>
 {% include window.html address="https://api.country.is/::ffff:909:909" %}
-<p>See the age of the underlying data file.</p>
+<p>Check the age of the underlying data file.</p>
 {% include window.html address="https://api.country.is/version" %}
 <p>Country automatically checks for new data every 24 hours.</p>
 
 <h3>Deployment</h3>
 <p>
-  If you prefer not to use the <a href="https://api.country.is">hosted service</a>, run your own private server
-  <a href="https://hub.docker.com/r/hakanensari/country">with Docker</a>.
+  If you prefer not to use the
+  <a href="https://api.country.is">hosted service</a>, run your own private
+  server <a href="https://hub.docker.com/r/hakanensari/country">with Docker</a>.
 </p>
 
 <h3>Notes</h3>
 <p>
-  Country uses <a href="https://www.maxmind.com">GeoLite2 data</a> created by MaxMind. Since 30 December 2019, you need
-  to <a href="https://www.maxmind.com/en/geolite2/signup">register for a license key</a> to download their data.
+  Country uses <a href="https://www.maxmind.com">GeoLite2 data</a> created by
+  MaxMind. Since 30 December 2019, you need to
+  <a href="https://www.maxmind.com/en/geolite2/signup"
+    >register for a license key</a
+  >
+  to download their data if you're running a private instance.
 </p>
-<p>The hosted service does not log requests.</p>
