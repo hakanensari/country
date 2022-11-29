@@ -5,6 +5,7 @@ module.exports = {
     node: true,
   },
   extends: ["eslint:recommended", "plugin:prettier/recommended"],
+  ignorePatterns: ["/docs/**/*.js"],
   rules: {
     "no-console": "off",
   },
