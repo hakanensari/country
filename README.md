@@ -23,7 +23,7 @@ https://api.country.is/9.9.9.9
 See the age of the underlying data file.
 
 ```
-https://api.country.is/version
+https://api.country.is/info
 ```
 
 Country automatically checks for a newer version every 24 hours.
