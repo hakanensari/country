@@ -1,61 +1,111 @@
----
-layout: default
-title: IP Geolocation API | Country
-description: Country is a free, privacy-conscious, and open-source geolocation API that finds the country of any IP address.
----
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Country is a free, privacy-conscious, and open-source geolocation API that finds the country of any IP address."
+    />
+    <title>IP Geolocation API | Country.is</title>
+    <script
+      defer
+      src="https://kit.fontawesome.com/d12ab438e8.js"
+      crossorigin="anonymous"
+    ></script>
+    <script defer src="javascripts/application.js"></script>
+    <link rel="stylesheet" href="styles/application.css" />
+  </head>
+  <body>
+    <header class="header">
+      <i class="fad fa-globe-europe fa-4x"></i>
+      <h1>Country.is</h1>
+      <p>
+        Country.is is an open-source geolocation API that finds a user's country
+        (and nothing else) from their IP address.
+      </p>
+      <p>
+        The public intance <a href="https://api.country.is">hosted here</a> is
+        free to use. No API keys or usage quotas.
+      </p>
+      <ul>
+        <li>
+          <a href="https://github.com/hakanensari/country">
+            <i class="fab fa-github fa-lg" title="GitHub"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://hub.docker.com/r/hakanensari/country">
+            <i class="fab fa-docker fa-lg" title="Docker"></i>
+          </a>
+        </li>
+      </ul>
+    </header>
 
-<header class="header">
-  <i class="fad fa-globe-europe fa-4x"></i>
-  <h1>Country</h1>
-  <p>
-    Country is a free, privacy-conscious, and open-source geolocation API that finds a user's country
-    (and nothing else) from their IP address.
-  </p>
-  <p>
-    The public service hosted here at
-    <a href="https://api.country.is"><code>api.country.is</code></a> is free to
-    use. In other words, no API keys or usage quotas.
-  </p>
-  <ul>
-    <li>
-      <a href="https://github.com/hakanensari/country">
-        <i class="fab fa-github fa-lg" title="GitHub"></i>
-      </a>
-    </li>
-    <li>
-      <a href="https://hub.docker.com/r/hakanensari/country">
-        <i class="fab fa-docker fa-lg" title="Docker"></i>
-      </a>
-    </li>
-  </ul>
-</header>
+    <h3>Usage</h3>
+    <p>Country has a minimal 🔥 interface.</p>
+    <p>Have your browser or app query its own IP address.</p>
 
-<h3>Usage</h3>
-<p>Country has a minimal :fire: interface.</p>
-<p>Let your browser or application query its own IP address.</p>
-{% include window.html address="https://api.country.is" %}
-<p>Or query any IP address.</p>
-{% include window.html address="https://api.country.is/9.9.9.9" %}
-<p>The API also works with IPv6 addresses.</p>
-{% include window.html address="https://api.country.is/::ffff:909:909" %}
-<p>Check the age of the underlying data file.</p>
-{% include window.html address="https://api.country.is/info" %}
-<p>Country automatically checks for new data every 24 hours.</p>
+    <div class="window">
+      <span class="button close"></span>
+      <span class="button min"></span>
+      <span class="button zoom"></span>
+      <div class="title">
+        <i class="fad fa-lock-alt fa-fw"></i>
+        <span class="address">https://api.country.is</span>
+      </div>
+      <pre class="content"></pre>
+    </div>
 
-<h3>Deployment</h3>
-<p>
-  If you prefer not to use the
-  <a href="https://api.country.is">hosted service</a>, run your own private
-  server <a href="https://hub.docker.com/r/hakanensari/country">with Docker</a>.
-</p>
+    <p>Query any IP.</p>
 
-<h3>Notes</h3>
-<p>
-  Country defaults to <a href="https://support.cloudflare.com/hc/en-us/articles/200168236-Configuring-IP-geolocation">IP geolocation metadata provided by Cloudfare</a>
-  if running behind their proxy and falls back on <a href="https://www.maxmind.com">GeoLite2 data</a> created by
-  MaxMind.
-</p>
-<p>
-  Since 30 December 2019, you need to <a href="https://www.maxmind.com/en/geolite2/signup">register for a license key</a>
-  to download their data if you're running a private instance.
-</p>
+    <div class="window">
+      <span class="button close"></span>
+      <span class="button min"></span>
+      <span class="button zoom"></span>
+      <div class="title">
+        <i class="fad fa-lock-alt fa-fw"></i>
+        <span class="address">https://api.country.is/9.9.9.9</span>
+      </div>
+      <pre class="content"></pre>
+    </div>
+
+    <p>Introspect the underlying data sources.</p>
+
+    <div class="window">
+      <span class="button close"></span>
+      <span class="button min"></span>
+      <span class="button zoom"></span>
+      <div class="title">
+        <i class="fad fa-lock-alt fa-fw"></i>
+        <span class="address">https://api.country.is/info</span>
+      </div>
+      <pre class="content"></pre>
+    </div>
+
+    <p>Country.is automatically checks for new MaxMind data every 24 hours.</p>
+
+    <h3>Deployment</h3>
+    <p>
+      If you prefer not to use the hosted service, run your own private server
+      <a href="https://hub.docker.com/r/hakanensari/country">with Docker</a>.
+    </p>
+
+    <h3>Notes</h3>
+    <p>
+      Country.is uses geolocation data provided by
+      <a
+        href="https://support.cloudflare.com/hc/en-us/articles/200168236-Configuring-IP-geolocation"
+        >Cloudfare</a
+      >
+      and <a href="https://www.maxmind.com">MaxMind</a>.
+    </p>
+    <p>
+      Since 30 December 2019, you need to
+      <a href="https://www.maxmind.com/en/geolite2/signup"
+        >register for a license key</a
+      >
+      to download the MaxMind data if you're running a private instance.
+    </p>
+  </body>
+</html>
