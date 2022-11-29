@@ -87,6 +87,17 @@ describe("GET /:ip", () => {
     const res = await req
     expect(res.headers["cache-control"]).toContain("public")
   })
+
+  describe("with Cloudflare", () => {
+    beforeEach(() => {
+      req.set("cf-ipcountry", "DE")
+    })
+
+    it("returns country", async () => {
+      const res = await req
+      expect(res.body.country).toBe("US")
+    })
+  })
 })
 
 describe("GET /info", () => {

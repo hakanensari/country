@@ -47,7 +47,7 @@ app.get("/info", (req, res) => {
 app.get("/:ip?", (req, res) => {
   const ip = req.params.ip || req.ip
   let countryCode
-  if (req.headers["cf-ipcountry"]) {
+  if (req.params.ip === undefined && req.headers["cf-ipcountry"]) {
     if (req.headers["cf-ipcountry"] != "XX") {
       countryCode = req.headers["cf-ipcountry"]
     }
