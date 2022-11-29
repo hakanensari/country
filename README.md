@@ -40,6 +40,6 @@ Replace the `YOUR_LICENSE_KEY` placeholder with a license key associated with yo
 
 ## Notes
 
-Country uses [GeoLite2 data](http://dev.maxmind.com/geoip/geoip2/geolite2/) provided by MaxMind. Since 30 December 2019, you need to [register for a license key](https://www.maxmind.com/en/geolite2/signup) to download their data.
+Country defaults to [IP geolocation metadata provided by Cloudfare](https://support.cloudflare.com/hc/en-us/articles/200168236-Configuring-IP-geolocation) if running behind their proxy and falls back on [GeoLite2 data](http://dev.maxmind.com/geoip/geoip2/geolite2/) provided by MaxMind.
 
-The hosted service does not log requests.
+Since 30 December 2019, you need to [register for a license key](https://www.maxmind.com/en/geolite2/signup) to download their data.

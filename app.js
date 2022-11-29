@@ -32,20 +32,37 @@ app.use((req, res, next) => {
   }
   next()
 })
+app.set("etag", "strong")
 
-app.get("/version", (req, res) => {
+app.get("/info", (req, res) => {
   stat(file, (err, stats) => {
-    res.json({ updatedOn: stats.birthtime.toDateString() })
+    const updated = stats.birthtime.toISOString().substring(0, 10)
+    res.json({
+      cloudflare: req.headers["cf-ipcountry"] !== undefined,
+      maxmind: updated,
+    })
   })
 })
 
 app.get("/:ip?", (req, res) => {
   const ip = req.params.ip || req.ip
-  const location = lookup.get(ip)
-  if (location && location.country) {
-    res.json({ country: location.country.iso_code, ip: ip })
+  let countryCode
+  if (req.headers["cf-ipcountry"]) {
+    if (req.headers["cf-ipcountry"] != "XX") {
+      countryCode = req.headers["cf-ipcountry"]
+    }
   } else {
-    res.status(422).json({ country: null, ip: ip })
+    const location = lookup.get(ip)
+    if (location && location.country) {
+      countryCode = location.country.iso_code
+    }
+  }
+  if (countryCode) {
+    res.json({ ip: ip, country: countryCode })
+  } else {
+    res
+      .status(422)
+      .json({ error: { code: 422, message: "Unprocessable Entity" } })
   }
 })
 

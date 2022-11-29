@@ -1,14 +1,14 @@
 ---
 layout: default
 title: IP Geolocation API | Country
-description: Country is a free and open-source geolocation API that finds the country of any IP address.
+description: Country is a free, privacy-conscious, and open-source geolocation API that finds the country of any IP address.
 ---
 
 <header class="header">
   <i class="fad fa-globe-europe fa-4x"></i>
   <h1>Country</h1>
   <p>
-    Country is a privacy-conscious geolocation API that finds a user's country
+    Country is a free, privacy-conscious, and open-source geolocation API that finds a user's country
     (and nothing else) from their IP address.
   </p>
   <p>
@@ -54,10 +54,11 @@ description: Country is a free and open-source geolocation API that finds the co
 
 <h3>Notes</h3>
 <p>
-  Country uses <a href="https://www.maxmind.com">GeoLite2 data</a> created by
-  MaxMind. Since 30 December 2019, you need to
-  <a href="https://www.maxmind.com/en/geolite2/signup"
-    >register for a license key</a
-  >
+  Country defaults to <a href="https://support.cloudflare.com/hc/en-us/articles/200168236-Configuring-IP-geolocation">IP geolocation metadata provided by Cloudfare</a>
+  if running behind their proxy and falls back on <a href="https://www.maxmind.com">GeoLite2 data</a> created by
+  MaxMind.
+</p>
+<p>
+  Since 30 December 2019, you need to <a href="https://www.maxmind.com/en/geolite2/signup">register for a license key</a>
   to download their data if you're running a private instance.
 </p>

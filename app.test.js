@@ -2,64 +2,118 @@ const request = require("supertest")
 const app = require("./app")
 
 describe("GET /", () => {
-  const ip = "9.9.9.9"
+  let ip, req
 
-  test("returns IP of the request", async () => {
-    const res = await request(app).get("/").set("x-forwarded-for", ip)
+  beforeEach(() => {
+    ip = "9.9.9.9"
+    req = request(app).get("/").set("x-forwarded-for", `${ip},1.2.3.4`)
+  })
+
+  it("returns IP", async () => {
+    const res = await req
     expect(res.body.ip).toBe(ip)
   })
 
-  test("returns country of the request", async () => {
-    const res = await request(app).get("/").set("x-forwarded-for", ip)
+  it("returns country", async () => {
+    const res = await req
     expect(res.body.country).toBe("US")
   })
 
-  test("sets cache-control to no-cache", async () => {
-    const res = await request(app).get("/").set("x-forwarded-for", ip)
+  it("sets cache control to no-cache", async () => {
+    const res = await req
     expect(res.headers["cache-control"]).toBe("no-cache")
+  })
+
+  it("sets strong etag", async () => {
+    const res = await req
+    expect(res.headers["etag"]).not.toMatch(/^W\//)
+  })
+
+  describe("with bad IP", () => {
+    beforeEach(() => {
+      req.set("x-forwarded-for", "192.168.0.1,1.2.3.4")
+    })
+
+    it("returns status", async () => {
+      const res = await req
+      expect(res.status).toBe(422)
+    })
+
+    it("returns message", async () => {
+      const res = await req
+      expect(res.body).not.toBeNull()
+    })
+  })
+
+  describe("with Cloudflare", () => {
+    let country
+
+    beforeEach(() => {
+      country = "DE"
+      req.set("cf-ipcountry", country)
+    })
+
+    it("returns IP", async () => {
+      const res = await req
+      expect(res.body.ip).toBe(ip)
+    })
+
+    it("returns country", async () => {
+      const res = await req
+      expect(res.body.country).toBe(country)
+    })
   })
 })
 
 describe("GET /:ip", () => {
-  const ip = "9.9.9.9"
+  let ip, req
 
-  test("returns given IP", async () => {
-    const res = await request(app)
-      .get(`/${ip}`)
-      .set("x-forwarded-for", "8.8.8.8")
+  beforeEach(() => {
+    ip = "9.9.9.9"
+    req = request(app).get(`/${ip}`).set("x-forwarded-for", "1.2.3.4")
+  })
+
+  it("returns IP", async () => {
+    const res = await req
     expect(res.body.ip).toBe(ip)
   })
 
-  test("returns country of given IP", async () => {
-    const res = await request(app)
-      .get(`/${ip}`)
-      .set("x-forwarded-for", "8.8.8.8")
+  it("returns country", async () => {
+    const res = await req
     expect(res.body.country).toBe("US")
   })
 
-  test("sets cache-control to public", async () => {
-    const res = await request(app)
-      .get(`/${ip}`)
-      .set("x-forwarded-for", "8.8.8.8")
+  it("sets cache control to public", async () => {
+    const res = await req
     expect(res.headers["cache-control"]).toContain("public")
-  })
-
-  test("handles bad IPs", async () => {
-    const ip = "192.168.0.1"
-    const res = await request(app).get("/").set("x-forwarded-for", ip)
-    expect(res.status).toBe(422)
-    expect(res.body).not.toBeNull()
   })
 })
 
-describe("GET /version", () => {
-  test("returns when data was updated", async () => {
-    const res = await request(app).get("/version")
-    expect(res.body.updatedOn).toBeDefined()
+describe("GET /info", () => {
+  let req
+
+  beforeEach(() => {
+    req = request(app).get("/info")
   })
 
-  test("sets cache-control to public", async () => {
-    const res = await request(app).get("/version")
+  it("returns maxmind", async () => {
+    const res = await req
+    expect(res.body.maxmind).toBeDefined()
+  })
+
+  it("sets cache-control to public", async () => {
+    const res = await req
     expect(res.headers["cache-control"]).toContain("public")
+  })
+
+  describe("with Cloudflare", () => {
+    beforeEach(() => {
+      req.set("cf-ipcountry", "DE")
+    })
+
+    it("returns cloudflare", async () => {
+      const res = await req
+      expect(res.body.cloudflare).toBeTruthy()
+    })
   })
 })
