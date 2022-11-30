@@ -1,4 +1,4 @@
-FROM node:14-alpine
+FROM node:18-alpine
 RUN apk add --no-cache curl
 ENV NODE_ENV production
 WORKDIR /app
