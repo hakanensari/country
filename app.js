@@ -1,6 +1,7 @@
 const { spawn, spawnSync } = require("child_process")
 const cors = require("cors")
 const express = require("express")
+const morgan = require("morgan")
 const { existsSync, readFileSync, stat } = require("fs")
 const { Reader } = require("maxmind")
 
@@ -23,6 +24,7 @@ const lookup = new Reader(readFileSync(file), { watchForUpdates: true })
 const app = express()
 
 app.enable("trust proxy")
+app.use(morgan("combined"))
 app.use(cors())
 app.use((req, res, next) => {
   if (req.path == "/") {
