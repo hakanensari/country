@@ -25,7 +25,7 @@ const lookup = new maxmind.Reader(fs.readFileSync(file), {
 })
 const findCountry = (ip) => {
   const location = lookup.get(ip)
-  if (location) {
+  if (location && location.country) {
     return location.country.iso_code
   }
 }
