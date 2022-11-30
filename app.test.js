@@ -9,7 +9,7 @@ describe("GET /", () => {
     req = request(app).get("/").set("x-forwarded-for", `${ip},1.2.3.4`)
   })
 
-  it("returns IP", async () => {
+  it("returns ip", async () => {
     const res = await req
     expect(res.body.ip).toBe(ip)
   })
@@ -29,23 +29,7 @@ describe("GET /", () => {
     expect(res.headers["etag"]).not.toMatch(/^W\//)
   })
 
-  describe("with bad IP", () => {
-    beforeEach(() => {
-      req.set("x-forwarded-for", "192.168.0.1,1.2.3.4")
-    })
-
-    it("returns status", async () => {
-      const res = await req
-      expect(res.status).toBe(422)
-    })
-
-    it("returns message", async () => {
-      const res = await req
-      expect(res.body).not.toBeNull()
-    })
-  })
-
-  describe("with Cloudflare", () => {
+  describe("with cloudflare", () => {
     let country
 
     beforeEach(() => {
@@ -53,7 +37,7 @@ describe("GET /", () => {
       req.set("cf-ipcountry", country)
     })
 
-    it("returns IP", async () => {
+    it("returns ip", async () => {
       const res = await req
       expect(res.body.ip).toBe(ip)
     })
@@ -68,34 +52,60 @@ describe("GET /", () => {
 describe("GET /:ip", () => {
   let ip, req
 
-  beforeEach(() => {
-    ip = "9.9.9.9"
-    req = request(app).get(`/${ip}`).set("x-forwarded-for", "1.2.3.4")
-  })
-
-  it("returns IP", async () => {
-    const res = await req
-    expect(res.body.ip).toBe(ip)
-  })
-
-  it("returns country", async () => {
-    const res = await req
-    expect(res.body.country).toBe("US")
-  })
-
-  it("sets cache control to public", async () => {
-    const res = await req
-    expect(res.headers["cache-control"]).toContain("public")
-  })
-
-  describe("with Cloudflare", () => {
+  describe("given a good ip", () => {
     beforeEach(() => {
-      req.set("cf-ipcountry", "DE")
+      ip = "9.9.9.9"
+      req = request(app).get(`/${ip}`).set("x-forwarded-for", "1.2.3.4")
+    })
+
+    it("returns ip", async () => {
+      const res = await req
+      expect(res.body.ip).toBe(ip)
     })
 
     it("returns country", async () => {
       const res = await req
       expect(res.body.country).toBe("US")
+    })
+
+    it("sets cache control to public", async () => {
+      const res = await req
+      expect(res.headers["cache-control"]).toContain("public")
+    })
+
+    describe("with cloudflare", () => {
+      beforeEach(() => {
+        req.set("cf-ipcountry", "DE")
+      })
+
+      it("returns country", async () => {
+        const res = await req
+        expect(res.body.country).toBe("US")
+      })
+    })
+  })
+
+  describe("given an ip that doesn't return a match", () => {
+    beforeEach(() => {
+      ip = "192.168.0.1"
+      req = request(app).get(`/${ip}`).set("x-forwarded-for", "1.2.3.4")
+    })
+
+    it("returns an error status", async () => {
+      const res = await req
+      expect(res.status).toBe(404)
+    })
+  })
+
+  describe("given an invalid ip", () => {
+    beforeEach(() => {
+      ip = "9.9.9.9boom"
+      req = request(app).get(`/${ip}`).set("x-forwarded-for", "1.2.3.4")
+    })
+
+    it("returns an error status", async () => {
+      const res = await req
+      expect(res.status).toBe(422)
     })
   })
 })
@@ -112,19 +122,13 @@ describe("GET /info", () => {
     expect(res.body.maxmind).toBeDefined()
   })
 
+  it("returns cloudflare", async () => {
+    const res = await req.set("cf-ipcountry", "DE")
+    expect(res.body.cloudflare).toBeTruthy()
+  })
+
   it("sets cache-control to public", async () => {
     const res = await req
     expect(res.headers["cache-control"]).toContain("public")
-  })
-
-  describe("with Cloudflare", () => {
-    beforeEach(() => {
-      req.set("cf-ipcountry", "DE")
-    })
-
-    it("returns cloudflare", async () => {
-      const res = await req
-      expect(res.body.cloudflare).toBeTruthy()
-    })
   })
 })
