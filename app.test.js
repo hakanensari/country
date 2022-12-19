@@ -91,7 +91,7 @@ describe("GET /:ip", () => {
       req = request(app).get(`/${ip}`).set("x-forwarded-for", "1.2.3.4")
     })
 
-    it("returns an error status", async () => {
+    it("returns an error", async () => {
       const res = await req
       expect(res.status).toBe(404)
     })
@@ -103,7 +103,7 @@ describe("GET /:ip", () => {
       req = request(app).get(`/${ip}`).set("x-forwarded-for", "1.2.3.4")
     })
 
-    it("returns an error status", async () => {
+    it("returns an error", async () => {
       const res = await req
       expect(res.status).toBe(422)
     })
@@ -131,4 +131,14 @@ describe("GET /info", () => {
     const res = await req
     expect(res.headers["cache-control"]).toContain("public")
   })
+})
+
+it("handles bad routes", async () => {
+  const res = await request(app).get("/foo/bar")
+  expect(res.status).toBe(422)
+})
+
+it("returns a robots.txt", async () => {
+  const res = await request(app).get("/robots.txt")
+  expect(res.status).toBe(200)
 })

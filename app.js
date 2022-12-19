@@ -50,6 +50,8 @@ app.use((req, res, next) => {
 
 app.set("etag", "strong")
 
+app.use(express.static("public"))
+
 app.get("/info", (req, res) => {
   fs.stat(file, (err, stats) => {
     const updated = stats.birthtime.toISOString().substring(0, 10)
@@ -85,6 +87,12 @@ app.get("/:ip?", (req, res) => {
   } else {
     res.status(404).json({ error: { code: 404, message: "Not Found" } })
   }
+})
+
+app.get("*", function (req, res) {
+  return res
+    .status(422)
+    .json({ error: { code: 422, message: "Unprocessable Entity" } })
 })
 
 module.exports = app
