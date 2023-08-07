@@ -14,7 +14,7 @@ jobs:
       - run: npm install
       - run: npm test
         env:
-          LICENSE_KEY: ${{ secrets.LICENSE_KEY }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       - name: Publish image
         uses: elgohr/Publish-Docker-Github-Action@v4
         with:

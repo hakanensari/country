@@ -1,4 +1,5 @@
 #!/bin/sh
 mkdir -p data
 cd data
-curl https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country\&suffix=tar.gz\&license_key=$LICENSE_KEY | tar --strip-components 1 -zxf -
+curl -L "https://ipinfo.io/data/free/country.mmdb?token=$ACCESS_TOKEN" -o ipinfo_country.mmdb
+cat ipinfo_country.mmdb
