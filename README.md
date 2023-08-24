@@ -30,16 +30,15 @@ Country.is automatically checks for a newer version every 24 hours.
 
 ## Deployment
 
-Use the [hosted service](https://api.country.is) or run privately with
+Use the [hosted service](https://api.country.is) or run privately via the `Dockerfile`.
 
 ```
-docker run -d -p 3000:3000 -e LICENSE_KEY=YOUR_LICENSE_KEY hakanensari/country
+docker build -t country_is .
+docker run -d -p 3000:3000 -e ACCESS_TOKEN=YOUR_ACCESS_TOKEN country_is
 ```
 
-Replace the `YOUR_LICENSE_KEY` placeholder with a license key associated with your MaxMind account.
+Replace the `YOUR_ACCESS_TOKEN` placeholder with an access token key associated with your [IPinfo.io account](https://ipinfo.io/account/token).
 
 ## Notes
 
-Country.is uses geolocation data provided by [Cloudfare](https://support.cloudflare.com/hc/en-us/articles/200168236-Configuring-IP-geolocation) and [MaxMind](http://dev.maxmind.com/geoip/geoip2/geolite2/).
-
-Since 30 December 2019, you need to [register for a license key](https://www.maxmind.com/en/geolite2/signup) to download the MaxMind data.
+Country.is uses geolocation data provided by [Cloudfare](https://support.cloudflare.com/hc/en-us/articles/200168236-Configuring-IP-geolocation) and [IPinfo.io](https://ipinfo.io/products/free-ip-database)

@@ -5,16 +5,16 @@ const { spawn, spawnSync } = require("child_process"),
   fs = require("fs"),
   maxmind = require("maxmind")
 
-const file = "./data/GeoLite2-Country.mmdb"
+const file = "./data/ipinfo_country.mmdb"
 
 if (!fs.existsSync(file)) {
-  if (process.env.LICENSE_KEY === undefined) {
-    throw new Error("Set a license key to download GeoIP data from MaxMind")
+  if (process.env.ACCESS_TOKEN === undefined) {
+    throw new Error("Get your free IPinfo.io access token to download the IP to Country database")
   }
   spawnSync("./getdb")
 }
 
-if (process.env.LICENSE_KEY) {
+if (process.env.ACCESS_TOKEN) {
   setInterval(() => {
     spawn("./getdb")
   }, 24 * 3600 * 1000)
@@ -26,7 +26,7 @@ const lookup = new maxmind.Reader(fs.readFileSync(file), {
 const findCountry = (ip) => {
   const location = lookup.get(ip)
   if (location && location.country) {
-    return location.country.iso_code
+    return location.country
   }
 }
 
