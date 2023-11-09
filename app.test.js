@@ -24,11 +24,6 @@ describe("GET /", () => {
     expect(res.headers["cache-control"]).toBe("no-cache")
   })
 
-  it("sets strong etag", async () => {
-    const res = await req
-    expect(res.headers["etag"]).not.toMatch(/^W\//)
-  })
-
   describe("with cloudflare", () => {
     let country
 

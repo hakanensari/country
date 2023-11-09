@@ -39,6 +39,8 @@ app.enable("trust proxy")
 
 app.use(cors())
 
+app.enable("etag")
+
 app.use((req, res, next) => {
   if (req.path == "/") {
     res.set("Cache-Control", "no-cache")
@@ -47,8 +49,6 @@ app.use((req, res, next) => {
   }
   next()
 })
-
-app.set("etag", "strong")
 
 app.use(express.static("public"))
 
