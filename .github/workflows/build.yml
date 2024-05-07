@@ -17,7 +17,7 @@ jobs:
           ACCOUNT_ID: ${{ secrets.ACCOUNT_ID }}
           LICENSE_KEY: ${{ secrets.LICENSE_KEY }}
       - name: Publish image
-        uses: elgohr/Publish-Docker-Github-Action@v4
+        uses: elgohr/Publish-Docker-Github-Action@v5
         with:
           name: hakanensari/country
           username: ${{ secrets.DOCKER_USERNAME }}
