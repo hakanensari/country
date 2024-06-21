@@ -33,7 +33,7 @@ https://api.country.is/info
 We run a public instance at [country.is](https://country.is). Alternatively, you can run privately with
 
 ```
-docker run -d -p 3000:3000 -e ACCOUNT_ID=YOUR_MAXMIND_ACCOUNT_ID LICENSE_KEY=YOUR_MAXMIND_LICENSE_KEY hakanensari/country
+docker run -d -p 3000:3000 -e ACCOUNT_ID=YOUR_MAXMIND_ACCOUNT_ID -e LICENSE_KEY=YOUR_MAXMIND_LICENSE_KEY hakanensari/country
 ```
 
 Replace the `YOUR_MAXMIND_ACCOUNT_ID` and `YOUR_LICENSE_KEY` placeholders with your MaxMind account ID and the license key associated with it.
