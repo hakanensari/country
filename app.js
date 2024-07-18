@@ -53,12 +53,9 @@ app.use((req, res, next) => {
 app.use(express.static("public"))
 
 app.get("/info", (req, res) => {
-  fs.stat(file, (err, stats) => {
-    const updated = stats.birthtime.toISOString().substring(0, 10)
-    res.json({
-      cloudflare: req.headers["cf-ipcountry"] !== undefined,
-      maxmind: updated,
-    })
+  res.json({
+    cloudflare: req.headers["cf-ipcountry"] !== undefined,
+    maxmind: lookup.metadata.buildEpoch.toISOString().substring(0, 10),
   })
 })
 
