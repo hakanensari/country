@@ -12,7 +12,10 @@ jobs:
         with:
           node-version: "20"
       - run: npm install
-      - run: npm test
+      - name: Run tests
+        env:
+          RUN_INTERVAL: "false"
+        run: npm test
         env:
           ACCOUNT_ID: ${{ secrets.ACCOUNT_ID }}
           LICENSE_KEY: ${{ secrets.LICENSE_KEY }}

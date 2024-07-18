@@ -11,7 +11,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "test": "eslint . && jest"
+    "test": "eslint . && jest --detectOpenHandles"
   },
   "dependencies": {
     "cors": "^2.8.5",

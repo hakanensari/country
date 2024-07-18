@@ -14,7 +14,7 @@ if (!fs.existsSync(file)) {
   spawnSync("./getdb")
 }
 
-if (process.env.LICENSE_KEY) {
+if (process.env.LICENSE_KEY && process.env.RUN_INTERVAL !== "false") {
   setInterval(() => {
     spawn("./getdb")
   }, 24 * 3600 * 1000)
