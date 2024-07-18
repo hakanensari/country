@@ -14,11 +14,10 @@ jobs:
       - run: npm install
       - name: Run tests
         env:
-          RUN_INTERVAL: "false"
-        run: npm test
-        env:
           ACCOUNT_ID: ${{ secrets.ACCOUNT_ID }}
           LICENSE_KEY: ${{ secrets.LICENSE_KEY }}
+          RUN_INTERVAL: "false"
+        run: npm test
       - name: Publish image
         uses: elgohr/Publish-Docker-Github-Action@v5
         with:
