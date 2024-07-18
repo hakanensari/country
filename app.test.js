@@ -114,12 +114,12 @@ describe("GET /info", () => {
 
   it("returns maxmind", async () => {
     const res = await req
-    expect(res.body.maxmind).toBeDefined()
+    expect(res.body.maxmind.enabled).toBeTruthy()
   })
 
   it("returns cloudflare", async () => {
     const res = await req.set("cf-ipcountry", "DE")
-    expect(res.body.cloudflare).toBeTruthy()
+    expect(res.body.cloudflare.enabled).toBeTruthy()
   })
 
   it("sets cache-control to public", async () => {
