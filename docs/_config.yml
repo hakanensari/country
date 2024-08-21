@@ -1,5 +1,3 @@
 exclude:
   - CNAME
   - Gemfile*
-plugins:
-  - jemoji

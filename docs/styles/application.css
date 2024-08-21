@@ -1,78 +1,76 @@
+:root {
+  /* Light theme */
+  --tx-1: #1a1a1a;
+  --bg-1: #ffffff;
+  --bg-2: #f6f8fa;
+  --bg-3: #e5e7eb;
+  --lk-1: #0070f3;
+
+  /* Dark theme */
+  --d-tx-1: #eeeeee;
+  --d-bg-1: #111111;
+  --d-bg-2: #222222;
+  --d-bg-3: #333333;
+  --d-lk-1: #3291ff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --tx-1: var(--d-tx-1);
+    --bg-1: var(--d-bg-1);
+    --bg-2: var(--d-bg-2);
+    --bg-3: var(--d-bg-3);
+    --lk-1: var(--d-lk-1);
+  }
+}
+
 body {
-  background-color: #303030;
-  color: #ffffff;
+  background: var(--bg-1);
+  color: var(--tx-1);
   font-family: sans-serif;
-  padding: 1em;
+  line-height: 1.5;
+  margin: 0 auto;
+  max-width: 750px;
+  padding: 2rem;
+}
+
+h1,
+h2 {
+  line-height: 1;
+}
+
+h2 {
+  padding-top: 0.875rem;
 }
 
 a {
-  color: #2296f3;
+  color: var(--lk-1);
 }
 
-.header .fa-globe-europe {
-  color: #dddddd;
+dt {
+  font-weight: bold;
+  padding-top: 0.4375rem;
 }
 
-.header ul {
-  list-style-type: none;
-  padding-left: 0;
+dd {
+  margin: 0;
 }
 
-.header li {
-  display: inline-block;
+code,
+pre {
+  background: var(--bg-2);
+  border: 1px solid var(--bg-3);
+  border-radius: 4px;
+  font-size: 0.9em;
 }
 
-.header li:not(:last-child) {
-  margin-right: 8px;
+pre {
+  padding: 1rem 1.4rem;
 }
 
-.window {
-  background-color: #3f3d56;
-  border-radius: 8px;
-  padding-top: 2px;
-  padding-left: 5px;
-  padding-right: 5px;
-  position: relative;
-  font-size: 12px;
-}
-
-.window .button {
-  position: absolute;
-  top: 8px;
-  width: 8px;
-  height: 8px;
-  border-radius: 8px;
-  display: inline-block;
-}
-
-.window .close {
-  left: 8px;
-  background-color: #d55359;
-}
-
-.window .min {
-  left: 20px;
-  background-color: #d8b454;
-}
-
-.window .zoom {
-  left: 32px;
-  background-color: #7db24f;
-}
-
-.window .title {
-  position: absolute;
-  top: 4px;
-  left: 55px;
-  color: #fff;
-}
-
-.window .fa-lock-alt {
-  vertical-align: -1px;
-}
-
-.window .content {
-  margin-top: 26px;
-  padding: 0 4px 12px;
-  color: #cf81c4;
+pre code {
+  background: inherit;
+  border: 0;
+  color: inherit;
+  font-size: inherit;
 }

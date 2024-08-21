@@ -1,3 +1,7 @@
+---
+layout: compress
+---
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,9 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Country is a free, privacy-conscious, and open-source geolocation API that finds the country of any IP address."
+      content="Free IP-to-country geolocation API that returns a user’s country based on their IPv4/IPv6 address"
     />
-    <title>IP Geolocation API | Country.is</title>
+    <title>IP-to-Country Geolocation API | Country.is</title>
     <script
       defer
       src="https://kit.fontawesome.com/d12ab438e8.js"
@@ -17,98 +21,83 @@
     <link rel="stylesheet" href="styles/application.css" />
   </head>
   <body>
-    <header class="header">
-      <i class="fad fa-globe-europe fa-4x"></i>
-      <h1>Country.is</h1>
+    <header>
+      <i class="fa-sharp-duotone fa-solid fa-earth-americas fa-3x"></i>
+      <h1>Country</h1>
+      <a href="https://github.com/hakanensari/country">GitHub</a> /
+      <a href="https://hub.docker.com/r/hakanensari/country">Docker</a>
       <p>
-        <b>Country</b> is an open-source geolocation API that finds a user's country
-        (and nothing else) from their IP address. It works both with IPv4 and IPv6.
+        Country is an IP-to-country geolocation API that returns a user’s
+        country based on their IP address.
       </p>
       <p>
-        The public instance we run at <a href="https://api.country.is">api.country.is</a> is
-        free to use. It does not require an API key or impose usage quotas.
+        We offer a <a href="https://api.country.is">free instance</a>—no API key
+        needed. You can also self-host if preferred.
       </p>
-      <ul>
-        <li>
-          <a href="https://github.com/hakanensari/country">
-            <i class="fab fa-github fa-lg" title="GitHub"></i>
-          </a>
-        </li>
-        <li>
-          <a href="https://hub.docker.com/r/hakanensari/country">
-            <i class="fab fa-docker fa-lg" title="Docker"></i>
-          </a>
-        </li>
-      </ul>
     </header>
+    <h2>Usage</h2>
+    <p>The API has a minimal interface.</p>
+    <dl>
+      <dt>GET /</dt>
+      <dd>
+        Returns the country of the IP making the request, typically the user’s
+        browser or app.
+      </dd>
+      <dd>
+        <pre><code data-url="https://api.country.is/"></code></pre>
+      </dd>
+      <dt>GET /{ip}</dt>
+      <dd>
+        Returns the country of any given IP. The API supports both with IPv4 and
+        IPv6.
+      </dd>
+      <dd>
+        <pre><code data-url="https://api.country.is/77.1.2.3"></code></pre>
+      </dd>
+      <dt>GET /info</dt>
+      <dd>
+        Provides metadata about the API, including when the data sources were
+        last updated.
+      </dd>
+      <dd>
+        <pre><code data-url="https://api.country.is/info"></code></pre>
+      </dd>
+    </dl>
 
-    <h3>Usage</h3>
-    <p><b>Country</b> has a minimal 🔥 interface.</p>
-    <p>Have your browser or app query its own IP address.</p>
-
-    <div class="window">
-      <span class="button close"></span>
-      <span class="button min"></span>
-      <span class="button zoom"></span>
-      <div class="title">
-        <i class="fad fa-lock-alt fa-fw"></i>
-        <span class="address">https://api.country.is</span>
-      </div>
-      <pre class="content"></pre>
-    </div>
-
-    <p>Query an abitrary IP.</p>
-
-    <div class="window">
-      <span class="button close"></span>
-      <span class="button min"></span>
-      <span class="button zoom"></span>
-      <div class="title">
-        <i class="fad fa-lock-alt fa-fw"></i>
-        <span class="address">https://api.country.is/9.9.9.9</span>
-      </div>
-      <pre class="content"></pre>
-    </div>
-
-    <p>See the data sources.</p>
-
-    <div class="window">
-      <span class="button close"></span>
-      <span class="button min"></span>
-      <span class="button zoom"></span>
-      <div class="title">
-        <i class="fad fa-lock-alt fa-fw"></i>
-        <span class="address">https://api.country.is/info</span>
-      </div>
-      <pre class="content"></pre>
-    </div>
-
-    <p><b>Country</b> automatically checks for new MaxMind data every 24 hours.</p>
+    <p>
+      The API automatically updates MaxMind data every 24 hours in the
+      background.
+    </p>
 
     <h3>Deployment</h3>
     <p>
-      If you prefer not to use the hosted service, run your own private server
-      <a href="https://hub.docker.com/r/hakanensari/country">with Docker</a>.
+      If you prefer not to use our hosted service, you can self-host with
+      Docker.
+    </p>
+    <pre><code>{% include docker.sh %}</code></pre>
+    <p>
+      Replace <code>YOUR_MAXMIND_ACCOUNT_ID</code> and
+      <code>YOUR_LICENSE_KEY</code> with your MaxMind account ID and the
+      <a href="https://www.maxmind.com/en/geolite2/signup"
+        >license key associated with it</a
+      >.
     </p>
 
     <h3>Notes</h3>
-    <p>
-      <b>Country</b> uses geolocation data provided by
-      <a
-        href="https://support.cloudflare.com/hc/en-us/articles/200168236-Configuring-IP-geolocation"
-        >Cloudfare</a
-      >
-      and <a href="https://www.maxmind.com">MaxMind</a>.
-    </p>
-    <p>
-      Since 30 December 2019, you need to
-      <a href="https://www.maxmind.com/en/geolite2/signup"
-        >register for a license key</a
-      >
-      to download the MaxMind data if you're running a private instance.
-    </p>
-    <p>
-      Our public instance does not log requests.
-    </p>
+    <ul>
+      <li>
+        The API uses geolocation data provided by
+        <a href="https://www.maxmind.com">MaxMind</a> and optionally
+        <a
+          href="https://support.cloudflare.com/hc/en-us/articles/200168236-Configuring-IP-geolocation"
+          >Cloudfare</a
+        >.
+      </li>
+      <li>
+        Since 30 December 2019, you need to register for a license key to
+        download the data if you're self-hosting.
+      </li>
+      <li>The API does not log any requests.</li>
+    </ul>
   </body>
 </html>
