@@ -53,14 +53,13 @@ app.use((req, res, next) => {
 app.use(express.static("public"))
 
 app.get("/info", (req, res) => {
+  const dataSources = ["maxmind"]
+  if (req.headers["cf-ipcountry"] !== undefined) {
+    dataSources.push("cloudflare")
+  }
   res.json({
-    cloudflare: {
-      enabled: req.headers["cf-ipcountry"] !== undefined,
-    },
-    maxmind: {
-      enabled: true,
-      build: lookup.metadata.buildEpoch.toISOString().substring(0, 10),
-    },
+    dataSources,
+    lastUpdated: lookup.metadata.buildEpoch.toISOString(),
   })
 })
 
