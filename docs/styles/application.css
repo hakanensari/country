@@ -87,3 +87,7 @@ pre code {
   color: inherit;
   font-size: inherit;
 }
+
+ul {
+  padding-inline-start: 16px;
+}

@@ -96,8 +96,14 @@ layout: compress
         >.
       </li>
       <li>
-        Since 30 December 2019, you need to register for a license key to
-        download the data if you're self-hosting.
+        Since 30 December 2019, you need to register for a
+        <a href="https://www.maxmind.com/en/geolite2/signup">license key</a> to
+        download the MaxMind data if you're self-hosting.
+      </li>
+      <li>
+        Our public instance rate-limits queries from the same IP at 10 requests
+        per second. If you need to make more requests server-side, consider
+        self-hosting or querying the MaxMind data directly.
       </li>
       <li>The API does not log any requests.</li>
     </ul>
