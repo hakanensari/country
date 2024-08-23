@@ -39,13 +39,10 @@ Returns the country of any given IP. The API supports both with IPv4 and IPv6.
 
 Provides metadata about the API, including when the data sources were last updated.
 
-```
+```json
 /* https://api.country.is/info */
 {
-  "dataSources": [
-    "maxmind",
-    "cloudflare"
-  ],
+  "dataSources": ["maxmind", "cloudflare"],
   "lastUpdated": "2024-08-20T18:34:36.000Z"
 }
 ```
