@@ -65,20 +65,21 @@ dd {
   margin: 0;
 }
 
-code {
-  font-family: var(--font-mono);
+pre {
+  padding: 1rem 1.4rem;
 }
 
-code,
-pre {
+code {
+  font-family: var(--font-mono);
+  white-space: pre-wrap;
+}
+
+pre,
+code {
   background: var(--bg-2);
   border: 1px solid var(--bg-3);
   border-radius: 4px;
   font-size: 0.9em;
-}
-
-pre {
-  padding: 1rem 1.4rem;
 }
 
 pre code {
