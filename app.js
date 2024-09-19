@@ -9,14 +9,16 @@ const file = "./data/GeoLite2-Country.mmdb"
 
 if (!fs.existsSync(file)) {
   if (process.env.LICENSE_KEY === undefined) {
-    throw new Error("Set a license key to download GeoIP data from MaxMind")
+    throw new Error("Set credentials to download MaxMind data")
   }
+  console.log("Creating database")
   spawnSync("./getdb")
 }
 
 if (process.env.LICENSE_KEY && process.env.RUN_INTERVAL !== "false") {
   setInterval(
     () => {
+      console.log("Updating database")
       spawn("./getdb")
     },
     24 * 3600 * 1000,
@@ -25,6 +27,9 @@ if (process.env.LICENSE_KEY && process.env.RUN_INTERVAL !== "false") {
 
 const lookup = new maxmind.Reader(fs.readFileSync(file), {
   watchForUpdates: true,
+  watchForUpdatesHook: () => {
+    console.log("Database updated")
+  },
 })
 const findCountry = (ip) => {
   const location = lookup.get(ip)
