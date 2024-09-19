@@ -1,10 +1,10 @@
 # Country
 
-[![Build](https://github.com/hakanensari/country/workflows/build/badge.svg)](https://github.com/hakanensari/country/actions)
+[![Build](https://github.com/hakanensari/country/workflows/build/badge.svg)][action]
 
 Country is an IP-to-country geolocation API that returns a user’s country based on their IP address.
 
-We run a <a href="https://api.country.is">free instance</a>—no API key
+[We run a free instance][free-instance]—no API key
 needed. You can also self-host if preferred.
 
 ## Usage
@@ -58,3 +58,6 @@ docker run -d -p 3000:3000 -e ACCOUNT_ID=YOUR_MAXMIND_ACCOUNT_ID -e LICENSE_KEY=
 ```
 
 Replace `YOUR_MAXMIND_ACCOUNT_ID` and `YOUR_LICENSE_KEY` with your MaxMind account ID and the license key associated with it.
+
+[free-instance]: https://api.country.is
+[action]: https://github.com/hakanensari/country/actions
