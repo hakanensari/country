@@ -15,9 +15,12 @@ if (!fs.existsSync(file)) {
 }
 
 if (process.env.LICENSE_KEY && process.env.RUN_INTERVAL !== "false") {
-  setInterval(() => {
-    spawn("./getdb")
-  }, 24 * 3600 * 1000)
+  setInterval(
+    () => {
+      spawn("./getdb")
+    },
+    24 * 3600 * 1000,
+  )
 }
 
 const lookup = new maxmind.Reader(fs.readFileSync(file), {
