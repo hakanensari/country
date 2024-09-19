@@ -1,4 +1,9 @@
 const request = require("supertest")
+const { initializeDatabase } = require("./dbInit")
+
+// Initialize the database before requiring the app
+initializeDatabase()
+
 const app = require("./app")
 
 describe("GET /", () => {

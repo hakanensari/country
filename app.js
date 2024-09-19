@@ -1,31 +1,11 @@
-const { spawn, spawnSync } = require("child_process"),
-  cors = require("cors"),
-  express = require("express"),
-  morgan = require("morgan"),
-  fs = require("fs"),
-  maxmind = require("maxmind")
+const cors = require("cors")
+const express = require("express")
+const morgan = require("morgan")
+const { readFileSync } = require("fs")
+const maxmind = require("maxmind")
+const { file } = require("./dbInit")
 
-const file = "./data/GeoLite2-Country.mmdb"
-
-if (!fs.existsSync(file)) {
-  if (process.env.LICENSE_KEY === undefined) {
-    throw new Error("Set credentials to download MaxMind data")
-  }
-  console.log("Creating database")
-  spawnSync("./getdb")
-}
-
-if (process.env.LICENSE_KEY && process.env.RUN_INTERVAL !== "false") {
-  setInterval(
-    () => {
-      console.log("Updating database")
-      spawn("./getdb")
-    },
-    24 * 3600 * 1000,
-  )
-}
-
-const lookup = new maxmind.Reader(fs.readFileSync(file), {
+const lookup = new maxmind.Reader(readFileSync(file), {
   watchForUpdates: true,
   watchForUpdatesHook: () => {
     console.log("Database updated")

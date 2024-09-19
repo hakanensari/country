@@ -1,7 +1,12 @@
 const cluster = require("cluster")
 const os = require("os")
+const { initializeDatabase, scheduleDatabaseUpdates } = require("./dbInit")
 
 if (cluster.isMaster) {
+  // Initialize and schedule database updates
+  initializeDatabase()
+  scheduleDatabaseUpdates()
+
   // Fork workers
   for (let i = 0; i < os.cpus().length; i++) {
     cluster.fork()
