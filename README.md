@@ -1,6 +1,6 @@
 # Country
 
-[![Build](https://github.com/hakanensari/country/workflows/build/badge.svg)][action]
+[![Build](https://github.com/hakanensari/country/workflows/Build/badge.svg)][action]
 
 Country is an IP-to-country geolocation API that returns a user’s country based on their IP address.
 
